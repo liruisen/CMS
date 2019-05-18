@@ -31,7 +31,7 @@ namespace Sample01
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            services.Configure<Content>(Configuration.GetSection("Content"));//注册TOption实例
+            services.Configure<Content>(Configuration.GetSection("ContentList"));//注册TOption实例
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

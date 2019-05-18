@@ -19,6 +19,13 @@ namespace Sample01
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+            .ConfigureAppConfiguration((hosting, config) => {
+                var env = hosting.HostingEnvironment;
+                config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
+                .AddJsonFile("Content.json", optional: true, reloadOnChange: true)
+                .AddEnvironmentVariables();
+            })
                 .UseStartup<Startup>();
     }
 }
