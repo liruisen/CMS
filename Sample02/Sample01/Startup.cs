@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Sample01.Models;
 
 namespace Sample01
 {
@@ -30,6 +31,7 @@ namespace Sample01
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            services.Configure<Content>(Configuration.GetSection("Content"));//注册TOption实例
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
